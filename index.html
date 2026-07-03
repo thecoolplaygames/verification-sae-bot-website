@@ -87,8 +87,8 @@
         </div>
         
         <div id="step-2" class="hidden">
-            <!-- Put your Discord server invite link inside the href="HERE" -->
-            <a href="https://discord.gg/YOUR-INVITE-LINK" class="btn btn-success">Go to Server</a>
+            <!-- Your live Discord server link is correctly embedded here -->
+            <a href="https://discord.gg/yHyM6qqsG" class="btn btn-success">Go to Server</a>
             <br>
             <button class="btn btn-cancel" onclick="resetVerification()">Cancel</button>
         </div>
@@ -109,7 +109,7 @@
                 document.getElementById('title').innerText = "Verified! ✅";
                 document.getElementById('status-text').innerText = "Verification successful. You can now proceed to the server or cancel.";
                 document.getElementById('step-2').classList.remove('hidden');
-            }, 3000); // 3000 milliseconds = 3 seconds
+            }, 3000);
         }
 
         function resetVerification() {
