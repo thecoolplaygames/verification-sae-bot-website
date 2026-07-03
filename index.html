@@ -26,6 +26,8 @@
         }
         h1 { margin-bottom: 10px; color: #7289da; font-size: 28px; }
         p { color: #b9bbbe; margin-bottom: 30px; font-size: 16px; }
+        
+        /* Buttons */
         .btn {
             display: inline-block;
             background-color: #7289da;
@@ -35,17 +37,88 @@
             border-radius: 5px;
             font-weight: bold;
             font-size: 16px;
+            cursor: pointer;
+            border: none;
             transition: background 0.2s, transform 0.1s;
         }
         .btn:hover { background-color: #677bc4; transform: scale(1.02); }
-        .btn:active { transform: scale(0.98); }
+        
+        .btn-cancel {
+            background-color: #f04747;
+            margin-top: 10px;
+        }
+        .btn-cancel:hover { background-color: #d83c3c; }
+        
+        .btn-success {
+            background-color: #43b581;
+        }
+        .btn-success:hover { background-color: #3ca374; }
+
+        /* Spinner Animation */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top-color: #7289da;
+            animation: spin 1s ease infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Sae Bot Verification</h1>
-        <p>Click the button below to safely verify your account and access the server channels.</p>
-        <a href="#" class="btn">Verify Me</a>
+        <h1 id="title">Sae Bot Verification</h1>
+        <p id="status-text">Click the button below to safely verify your account and access the server channels.</p>
+        
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="spinner"></div>
+
+        <!-- Action States -->
+        <div id="step-1">
+            <button class="btn" onclick="startVerification()">Verify Me</button>
+        </div>
+        
+        <div id="step-2" class="hidden">
+            <!-- Put your Discord server invite link inside the href="HERE" -->
+            <a href="https://discord.gg/YOUR-INVITE-LINK" class="btn btn-success">Go to Server</a>
+            <br>
+            <button class="btn btn-cancel" onclick="resetVerification()">Cancel</button>
+        </div>
     </div>
+
+    <script>
+        function startVerification() {
+            // Hide the initial button
+            document.getElementById('step-1').classList.add('hidden');
+            
+            // Show the waiting spinner and update text
+            document.getElementById('status-text').innerText = "Please wait, verifying your session...";
+            document.getElementById('loading-spinner').style.display = 'block';
+            
+            // Wait 3 seconds, then show completed state
+            setTimeout(() => {
+                document.getElementById('loading-spinner').style.display = 'none';
+                document.getElementById('title').innerText = "Verified! ✅";
+                document.getElementById('status-text').innerText = "Verification successful. You can now proceed to the server or cancel.";
+                document.getElementById('step-2').classList.remove('hidden');
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+
+        function resetVerification() {
+            // Reset page back to the start if they hit cancel
+            document.getElementById('title').innerText = "Sae Bot Verification";
+            document.getElementById('status-text').innerText = "Click the button below to safely verify your account and access the server channels.";
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-1').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
