@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Verification</title>
+    <!-- hCaptcha API Script -->
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #242424;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        p {
+            color: #aaaaaa;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        .captcha-box {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Security Verification</h1>
+        <p>Please complete the captcha below to gain access to the server.</p>
+        
+        <form action="" method="POST">
+            <div class="captcha-box">
+                <!-- Replace YOUR_SITEKEY with the Sitekey from your hCaptcha dashboard -->
+                <div class="h-captcha" data-sitekey="7b5e5a18-9052-4522-a2f0-c072444e257e" data-theme="dark"></div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
